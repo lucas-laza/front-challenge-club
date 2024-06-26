@@ -1,0 +1,59 @@
+.login-card {
+  display: flex;
+  flex-direction: row;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.login-card .card-img {
+  border-radius: 0;
+  height: 100%;
+  object-fit: cover;
+}
+
+.login-card .card-body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-card .card-title {
+  margin-bottom: 1.5rem;
+}
+
+.forgot-password {
+  font-size: 0.9rem;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.login-card .text-center {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.login-card .text-center a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.login-card .text-center a:hover {
+  text-decoration: underline;
+}
+
+.form-control::placeholder {
+  opacity: 0.5;
+}
+
+.card-title {
+  font-weight: 700;
+  font-size: 24px;
+  text-align: left;
+}
