@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/Login';
 import Home from './components/Home';
 import Registration from './components/Registration';
-import AdminLogin from './components/AdminLogin';
+import AdminLogin from './components/Adminlogin';
 
 function AppRoutes() {
   return (
