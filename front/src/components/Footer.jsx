@@ -4,8 +4,8 @@ import '../assets/scss/main.scss';
 
 function Footer() {
   return (
-    <footer className="bg-primary text-white py-4 fixed-bottom">
-      <div className="container">
+    <footer className="bg-primary text-white py-4 fixed-bottom text-start">
+      <div className="footer-container">
         <div className="row">
           <div className="col-md-8">
             <h5 className="mb-3">
@@ -20,7 +20,7 @@ function Footer() {
             <p>Rejoignez-nous et vivez l'expérience ping-pong !</p>
           </div>
           <div className="col-md-4 text-md-right">
-            <ul className="list-unstyled">
+            <ul className="list-unstyled text-end">
               <li>
                 <Link to="/contact" className="text-white">
                   Contact
