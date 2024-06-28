@@ -9,7 +9,7 @@ const HeroBanner = () => {
         <div className="hero-img col-md-6 text-center">
           <img src={bannerimg} alt="Tennis de table" className="img-fluid" />
         </div>
-        <div className="hero-title col-md-3 text-left">
+        <div className="hero-title col-md-6 text-start">
           <h1>Club de tennis de table de Lille</h1>
           <p className="lead hero-text">
             Vous êtes passionné(e) de tennis de table ? Vous cherchez un club
