@@ -43,7 +43,10 @@ function Navbar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/club" className="nav-link" activeClassName="active">
+              <NavLink
+                to="/about-us"
+                className="nav-link"
+                activeClassName="active">
                 Notre club
               </NavLink>
             </li>
