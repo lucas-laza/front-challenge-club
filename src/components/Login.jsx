@@ -16,6 +16,10 @@ function Login() {
     try {
       const response = await login({ email, password });
       console.log('Login successful:', response);
+      e;
+      localStorage.setItem('token', response.token);
+      localStorage.setItem('userId', response.userId);
+      localStorage.setItem('isAdmin', response.isAdmin);
       navigate('/');
     } catch (error) {
       console.error('Error during login:', error);

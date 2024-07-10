@@ -42,6 +42,14 @@ export const login = async (credentials) => {
   }
 };
 
+const setAuthToken = (token) => {
+  if (token) {
+    apiClient.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  } else {
+    delete apiClient.defaults.headers.common['Authorization'];
+  }
+};
+
 // Users
 export const getAllUsers = async () => {
   try {
@@ -52,7 +60,8 @@ export const getAllUsers = async () => {
   }
 };
 
-export const getUserById = async (id) => {
+export const getUserById = async (id, token) => {
+  setAuthToken(token);
   try {
     const response = await apiClient.get(`/users/${id}`);
     return response.data;
@@ -61,7 +70,8 @@ export const getUserById = async (id) => {
   }
 };
 
-export const updateUser = async (id, userData) => {
+export const updateUser = async (id, userData, token) => {
+  setAuthToken(token);
   try {
     const response = await apiClient.put(`/users/${id}`, userData);
     return response.data;
@@ -70,7 +80,8 @@ export const updateUser = async (id, userData) => {
   }
 };
 
-export const deleteUser = async (id) => {
+export const deleteUser = async (id, token) => {
+  setAuthToken(token);
   try {
     const response = await apiClient.delete(`/users/${id}`);
     return response.data;
