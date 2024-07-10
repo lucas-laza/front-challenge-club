@@ -1,18 +1,32 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/scss/main.scss';
 import registrationImage from '../assets/img/lebrun2.png';
+import { signup } from '../Api';
 
 function Registration() {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    console.log('Email:', email);
-    console.log('Password:', password);
-    console.log('Confirm Password:', confirmPassword);
+    if (password !== confirmPassword) {
+      setErrorMessage('Les mots de passe ne correspondent pas.');
+      return;
+    }
+    try {
+      const response = await signup({ name, email, password });
+      console.log('User registered:', response);
+      navigate('/login');
+    } catch (error) {
+      console.error('Error during registration:', error);
+      setErrorMessage("Une erreur est survenue lors de l'inscription.");
+    }
   };
 
   return (
@@ -31,7 +45,23 @@ function Registration() {
               <div className="col-md-6 d-flex align-items-center">
                 <div className="card-body">
                   <h3 className="card-title mb-4">Rejoignez-nous !</h3>
+                  {errorMessage && (
+                    <div className="alert alert-danger" role="alert">
+                      {errorMessage}
+                    </div>
+                  )}
                   <form onSubmit={handleRegister}>
+                    <div className="form-group mb-3">
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="name"
+                        value={name}
+                        placeholder="Nom"
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                      />
+                    </div>
                     <div className="form-group mb-3">
                       <input
                         type="email"
@@ -70,7 +100,7 @@ function Registration() {
                     </button>
                     <div className="text-center mt-3">
                       <span>Déjà un compte ? </span>
-                      <a href="/login">Connectez vous</a>
+                      <a href="/login">Connectez-vous</a>
                     </div>
                   </form>
                 </div>

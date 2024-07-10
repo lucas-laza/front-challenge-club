@@ -7,6 +7,7 @@ import NewsPage from './components/NewsPage';
 import ClubInfoPage from './components/AboutUs';
 import ContactPage from './components/ContactPage';
 import EventsPage from './components/EventPage';
+import AdminPage from './components/AdminPage';
 
 function AppRoutes() {
   return (
@@ -20,6 +21,7 @@ function AppRoutes() {
         <Route path="/about-us" element={<ClubInfoPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/events" element={<EventsPage />} />
+        <Route path="/admin-page" element={<AdminPage />} />
       </Routes>
     </Router>
   );

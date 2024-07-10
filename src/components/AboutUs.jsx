@@ -8,7 +8,7 @@ import clubimg from '../assets/img/club-image.png';
 const ClubInfoPage = () => {
   return (
     <div className="club-info-page">
-      <header className="container my-5">
+      <header>
         <NavBar />
       </header>
       <div className="container">

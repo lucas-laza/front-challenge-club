@@ -1,16 +1,28 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/scss/main.scss';
 import loginImage from '../assets/img/lebrun.png';
+import { login } from '../Api';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log('Email:', email);
-    console.log('Password:', password);
+    try {
+      const response = await login({ email, password });
+      console.log('Login successful:', response);
+      navigate('/');
+    } catch (error) {
+      console.error('Error during login:', error);
+      setErrorMessage(
+        'Erreur de connexion. Veuillez vérifier vos identifiants.'
+      );
+    }
   };
 
   return (
@@ -24,15 +36,20 @@ function Login() {
               </div>
               <div className="col-md-6 d-flex align-items-center">
                 <div className="card-body">
-                  <h3 className="card-title mb-4">Connectez vous</h3>
+                  <h3 className="card-title mb-4">Connectez-vous</h3>
+                  {errorMessage && (
+                    <div className="alert alert-danger" role="alert">
+                      {errorMessage}
+                    </div>
+                  )}
                   <form onSubmit={handleLogin}>
                     <div className="form-group mb-3">
                       <input
-                        type="text"
+                        type="email"
                         className="form-control"
                         id="email"
                         value={email}
-                        placeholder="Nom d'utilisateur"
+                        placeholder="Adresse email"
                         onChange={(e) => setEmail(e.target.value)}
                         required
                       />
@@ -58,7 +75,7 @@ function Login() {
                     </button>
                     <div className="text-center mt-3">
                       <span>Pas encore de compte ? </span>
-                      <a href="/register">Créez en un</a>
+                      <a href="/register">Créez-en un</a>
                     </div>
                   </form>
                 </div>

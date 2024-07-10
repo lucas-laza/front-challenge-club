@@ -1,16 +1,32 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/scss/main.scss';
+import { login } from '../Api';
 
 function AdminLogin() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log("Nom d'utilisateur:", username);
-    console.log('Mot de passe:', password);
+    try {
+      const response = await login({ username, password });
+      console.log('Login successful:', response);
+
+      if (response.is_admin) {
+        navigate('/admin-page');
+      } else {
+        setErrorMessage("Accès refusé : Vous n'êtes pas administrateur.");
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+      setErrorMessage(
+        'Erreur de connexion. Veuillez vérifier vos identifiants.'
+      );
+    }
   };
 
   return (
@@ -20,6 +36,11 @@ function AdminLogin() {
         style={{ width: '100%', maxWidth: '400px' }}>
         <div className="card-body">
           <h3 className="card-title mb-4 text-center">Administration</h3>
+          {errorMessage && (
+            <div className="alert alert-danger" role="alert">
+              {errorMessage}
+            </div>
+          )}
           <form onSubmit={handleLogin}>
             <div className="form-group mb-3">
               <input

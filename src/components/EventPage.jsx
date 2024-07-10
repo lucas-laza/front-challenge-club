@@ -26,26 +26,26 @@ const EventsPage = () => {
   return (
     <div className="d-flex flex-column custom-bg">
       <NavBar />
-      <div className='container '>
-        <div className='d-flex flex-column align-items-start'>
+      <div className="container ">
+        <div className="d-flex flex-column align-items-start">
           <h2 className="title-second">Tournoi à venir</h2>
-          <hr className='w-100'/>
+          <hr className="w-100" />
           <EventCarousel events={events.slice(0, 5)} />
         </div>
 
-        <div className='d-flex flex-column align-items-start'>
+        <div className="d-flex flex-column align-items-start">
           <h2 className="title-second">Nos événements à venir</h2>
-          <hr className='w-100'/>
+          <hr className="w-100" />
           <EventCarousel events={events.slice(5, 10)} />
         </div>
 
-        <div className='d-flex flex-column align-items-start'>
+        <div className="d-flex flex-column align-items-start">
           <h2 className="title-second">Nos événements passés</h2>
-          <hr className='w-100'/>
+          <hr className="w-100" />
           <EventCarousel events={events.slice(5, 10)} />
         </div>
       </div>
-      <FooterWhite/>
+      <FooterWhite />
     </div>
   );
 };
