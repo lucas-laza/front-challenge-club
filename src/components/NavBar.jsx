@@ -4,22 +4,8 @@ import '../assets/scss/main.scss';
 
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
-      <div className="container">
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div
-          className="collapse navbar-collapse justify-content-center"
-          id="navbarNav">
-          <ul className="navbar-nav gap-4">
+    <header class="d-flex flex-wrap bg-light align-items-center justify-content-center py-3 mb-4 border-bottom">
+      <ul class="nav col-12 col-md-auto justify-content-center mb-md-0">
             <li className="nav-item">
               <NavLink
                 exact
@@ -58,10 +44,8 @@ function Navbar() {
                 Contactez-nous
               </NavLink>
             </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+      </ul>
+    </header>
   );
 }
 

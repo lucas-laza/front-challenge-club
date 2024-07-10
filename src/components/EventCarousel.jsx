@@ -16,7 +16,7 @@ const EventCarousel = ({ events }) => {
   };
 
   return (
-    <div className="event-carousel-container">
+    <div className="event-carousel-container mb-4">
       <div className="event-carousel" ref={carouselRef}>
         {events.map((event) => (
           <EventCard

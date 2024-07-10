@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/scss/main.scss';
-import raquette from '../assets/img/raquette.svg'
+import raquette from '../assets/img/raquetteWhite.svg'
 
-function Footer() {
+function FooterWhite() {
   return (
-    <footer className="custom-bg text-white w-100 py-4 text-start">
+    <footer className="bg-light text-dark w-100 py-4 text-start">
       <div className="footer-container">
         <div className="row">
           <div className="col-md-8">
@@ -45,4 +45,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default FooterWhite;

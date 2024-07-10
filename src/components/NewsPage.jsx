@@ -16,9 +16,7 @@ const NewsPage = () => {
 
   return (
     <div className="news-page">
-      <header className="container my-5">
-        <NavBar />
-      </header>
+      <NavBar />
       <Container>
         <Row className="my-4">
           <Col>

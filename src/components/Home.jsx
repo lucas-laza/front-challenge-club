@@ -19,18 +19,23 @@ const Home = () => {
 
   return (
     <div className="home">
-      <header className="container my-5">
-        <NavBar />
-      </header>
+      <NavBar />
       <HeroBanner />
-      <div className="container">
-        <h2>Nos événements</h2>
-        <EventCarousel events={events} />
-        <button className="btn btn-primary mt-3">Voir tout</button>
+      <div className="custom-bg p-3">
+        <div className='container pb-5'> 
+          <div className='d-flex flex-row justify-content-between w-100 align-items-center mb-4 mt-4'> 
+            <span className='title-custom'>Nos événements</span>
+            <button className="btn btn-light text-primary mt-3">Voir tout</button>
+          </div>
+          <EventCarousel events={events} />
+        </div>
       </div>
-      <section className="news my-5">
-        <h2>Nos actualités</h2>
-        <div className="list-group">
+      <section className="news my-5 d-flex flex-column align-items-start container">
+        <div className='d-flex flex-row justify-content-between w-100 align-items-center mb-4'>
+          <span className='text-dark title-custom'>Nos actualités</span>
+          <button className="btn btn-primary mt-3">Voir tout</button>
+        </div>
+        <div className="list-group mb-4">
           {news.map((newsItem, index) => (
             <NewsItem
               key={index}
@@ -40,7 +45,6 @@ const Home = () => {
             />
           ))}
         </div>
-        <button className="btn btn-secondary mt-3">Voir tout</button>
       </section>
       <Footer />
     </div>
