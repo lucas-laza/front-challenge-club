@@ -5,13 +5,24 @@ import NavBar from './NavBar';
 import Footer from './Footer';
 import '../assets/scss/main.scss';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import newsData from '../json/newsdata.json';
+import { getAllNews } from '../Api';
 
 const NewsPage = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    setNews(newsData);
+    const fetchNews = async () => {
+      try {
+        const newsData = await getAllNews();
+        setNews(newsData);
+      } catch (error) {
+        setError('Error fetching news: ' + error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNews();
   }, []);
 
   return (
