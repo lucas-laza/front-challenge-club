@@ -8,7 +8,7 @@ function Footer() {
     <footer className="custom-bg text-white w-100 py-4 text-start">
       <div className="footer-container">
         <div className="row">
-          <div className="col-md-8">
+          <div className="col-md-8 mb-2">
             <h5 className="mb-3 d-flex flex-row align-items-center fw-bold">
               <i className="fas fa-table-tennis me-2 mt-1"><img style={{height: 32}} src={raquette} alt="" /></i> TT Lille Métropole -
               Bienvenue dans l'univers du ping-pong !
