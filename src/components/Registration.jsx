@@ -30,19 +30,19 @@ function Registration() {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div>
-          <div className="card login-card">
-            <div className="row no-gutters">
-              <div className="col-md-6">
+    <div className="container mt-5 h-100">
+      <div className="row justify-content-center h-100">
+        <div className='w-75 mb-5 h-50' style={{height: "50vh"}}>
+          <div className="card w-100 login-card">
+            <div className="d-flex flex-row no-gutters w-100">
+              <div className="w-50">
                 <img
                   src={registrationImage}
                   className="card-img h-100 rounded-0"
                   alt="Register"
                 />
               </div>
-              <div className="col-md-6 d-flex align-items-center">
+              <div className="w-50 d-flex align-items-center">
                 <div className="card-body">
                   <h3 className="card-title mb-4">Rejoignez-nous !</h3>
                   {errorMessage && (

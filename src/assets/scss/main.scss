@@ -32,7 +32,6 @@
 
 .border-primary{
     border-color: #7749F8 !important;
-    opacity: 0.5;
 }
 
 .btn-warning{
@@ -87,4 +86,18 @@ body{
 
 tr{
     border-bottom: 1px solid lightgrey;
+}
+
+.btn-outline-primary{
+    border-color: #7749F8;
+    color: #7749F8;
+
+    &:hover{
+        background-color: #7749F8;
+        color: white;
+    }
+}
+ a{
+    color: #7749F8;
+    text-decoration: none;
 }

@@ -15,7 +15,6 @@ const NewsItem = ({ title, description, date }) => {
     <div className="text-dark d-flex flex-column align-items-start mb-3 mt-3">
       <div className='d-flex flex-row mb-3'>
         {isDateLessThanOneDayOld(date) ? <button type="button" class="btn btn-primary btn-sm">Nouveauté</button> : ""}
-        
       </div>
       <h5 className="mb-1">{title}</h5>
       <hr className='w-100 border-primary' />

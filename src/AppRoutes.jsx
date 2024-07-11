@@ -11,6 +11,7 @@ import CreateEvent from './components/AdminEventsCreate';
 import GestionEvent from './components/AdminEventsGestion';
 import AdminNewsCreate from './components/AdminNewsCreate';
 import AdminNewsGestion from './components/AdminNewsGestion';
+import Privacy from './components/Privacy';
 
 function AppRoutes() {
   const token = localStorage.getItem('token');
@@ -22,6 +23,7 @@ function AppRoutes() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Registration />} />
       <Route path="/news" element={<NewsPage />} />
+      <Route path="/privacy" element={<Privacy />} />
       <Route path="/about-us" element={<ClubInfoPage />} />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/events" element={<EventsPage />} />
@@ -37,7 +39,7 @@ function AppRoutes() {
       <Route path="/about-us" element={<ClubInfoPage />} />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/events" element={<EventsPage />} />
-
+      <Route path="/privacy" element={<Privacy />} />
       <Route path="/admin/events/create" element={<CreateEvent />} />
       <Route path="/admin/events/gestion" element={<GestionEvent />} />
       <Route path="/admin/news/create" element={<AdminNewsCreate />} />
