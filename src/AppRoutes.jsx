@@ -11,19 +11,32 @@ import ProfilePage from './components/ProfilePage';
 
 function AppRoutes() {
   const token = localStorage.getItem('token');
+  const isAdmin = localStorage.getItem('isAdmin');
+  const routes = <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Registration />} />
+                  <Route path="/news" element={<NewsPage />} />
+                  <Route path="/about-us" element={<ClubInfoPage />} />
+                  <Route path="/contact" element={<ContactPage />} />
+                  <Route path="/events" element={<EventsPage />} />
+                  <Route path="/admin-page" element={<AdminPage />} />
+                  <Route path="/profile" element={<ProfilePage token={token} />} />
+                </Routes>
+  const adminRoutes = <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Registration />} />
+                    <Route path="/news" element={<NewsPage />} />
+                    <Route path="/about-us" element={<ClubInfoPage />} />
+                    <Route path="/contact" element={<ContactPage />} />
+                    <Route path="/events" element={<EventsPage />} />
+                    <Route path="/admin-page" element={<AdminPage />} />
+                    <Route path="/profile" element={<ProfilePage token={token} />} />
+                  </Routes>
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Registration />} />
-        <Route path="/news" element={<NewsPage />} />
-        <Route path="/about-us" element={<ClubInfoPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/events" element={<EventsPage />} />
-        <Route path="/admin-page" element={<AdminPage />} />
-        <Route path="/profile" element={<ProfilePage token={token} />} />
-      </Routes>
+      {isAdmin === true ? adminRoutes :routes}
     </Router>
   );
 }
