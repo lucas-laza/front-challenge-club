@@ -80,3 +80,11 @@
     font-size: 20px;
     font-weight: 600;
 }
+
+body{
+    place-items: start !important;
+}
+
+tr{
+    border-bottom: 1px solid lightgrey;
+}

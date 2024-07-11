@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Container, Row, Col, Form, Button, Modal } from 'react-bootstrap';
-import NavBar from './NavBar';
+import NavBarAdmin from './NavBarAdmin';
 import Footer from './Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/scss/main.scss';
@@ -79,16 +79,12 @@ const AdminPage = () => {
   };
 
   return (
-    <div className="admin-page">
-      <header className="container my-5">
-        <NavBar />
-      </header>
-      <Container>
-        <Row className="my-5">
+    <div className="admin-page d-flex flex-row">
+      <NavBarAdmin/>
+      <Container className='p-4'>
+        {/* <Row className="my-5">
           <Col className="text-center">
-            <Button variant="primary" onClick={() => setShowArticleModal(true)}>
-              Créer un nouvel article
-            </Button>
+            
             <Button
               variant="secondary"
               onClick={() => setShowEventModal(true)}
@@ -96,7 +92,46 @@ const AdminPage = () => {
               Créer un nouvel événement
             </Button>
           </Col>
-        </Row>
+        </Row> */}
+        <div className='d-flex flex-column mt-3'>
+          <div className='d-flex flex-row'>
+            <input type="text" placeholder='Cherchez un article' className='form-control me-3' />
+            <Button variant="primary" style={{whiteSpace: "nowrap"}} onClick={() => setShowArticleModal(true)}>
+              Créer un nouvel article
+            </Button>
+          </div>
+          <div>
+          <table class="table mt-4">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
       </Container>
 
       <Modal show={showArticleModal} onHide={() => setShowArticleModal(false)}>
@@ -195,7 +230,6 @@ const AdminPage = () => {
           </Form>
         </Modal.Body>
       </Modal>
-      <Footer />
     </div>
   );
 };

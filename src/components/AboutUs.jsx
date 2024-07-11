@@ -7,7 +7,7 @@ import clubimg from '../assets/img/club-image.png';
 
 const ClubInfoPage = () => {
   return (
-    <div className="club-info-page">
+    <div className="d-flex flex-column ">
       <NavBar />
       <div className="container">
         <div className="row my-4">
