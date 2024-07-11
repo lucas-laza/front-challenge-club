@@ -1,67 +1,62 @@
 import { NavLink } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/scss/main.scss';
+import { FaUser, FaUserShield } from 'react-icons/fa';
 
 function Navbar() {
+  const isLoggedIn = !!localStorage.getItem('token');
+  const isAdmin = localStorage.getItem('is_admin') === 'true';
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
-      <div className="container">
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div
-          className="collapse navbar-collapse justify-content-center"
-          id="navbarNav">
-          <ul className="navbar-nav gap-4">
-            <li className="nav-item">
-              <NavLink
-                exact
-                to="/"
-                className="nav-link"
-                activeClassName="active">
-                Accueil
+    <header className="d-flex flex-wrap bg-light align-items-center justify-content-between py-3 mb-4 border-bottom">
+      <div className="container d-flex justify-content-between align-items-center">
+        <ul className="nav col-12 col-md-auto justify-content-center mb-md-0">
+          <li className="nav-item">
+            <NavLink exact to="/" className="nav-link" activeClassName="active">
+              Accueil
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink to="/events" className="nav-link" activeClassName="active">
+              Nos événements
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink to="/news" className="nav-link" activeClassName="active">
+              Nos actualités
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink
+              to="/about-us"
+              className="nav-link"
+              activeClassName="active">
+              Notre club
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink
+              to="/contact"
+              className="nav-link"
+              activeClassName="active">
+              Contactez-nous
+            </NavLink>
+          </li>
+        </ul>
+        {isLoggedIn && (
+          <div className="ms-auto d-flex align-items-center">
+            {isAdmin && (
+              <NavLink to="/admin-page" className="nav-link">
+                <FaUserShield size={24} style={{ marginLeft: '20px' }} />
               </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                to="/events"
-                className="nav-link"
-                activeClassName="active">
-                Nos événements
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink to="/news" className="nav-link" activeClassName="active">
-                Nos actualités
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                to="/about-us"
-                className="nav-link"
-                activeClassName="active">
-                Notre club
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                to="/contact"
-                className="nav-link"
-                activeClassName="active">
-                Contactez-nous
-              </NavLink>
-            </li>
-          </ul>
-        </div>
+            )}
+            <NavLink to="/profile" className="nav-link">
+              <FaUser size={24} style={{ marginLeft: '20px' }} />
+            </NavLink>
+          </div>
+        )}
       </div>
-    </nav>
+    </header>
   );
 }
 

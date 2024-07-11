@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/scss/main.scss';
-import raquette from '../assets/img/raquette.svg'
+import raquette from '../assets/img/raquetteWhite.svg'
 
-function Footer() {
+function FooterWhite() {
   return (
-    <footer className="custom-bg text-white w-100 py-4 text-start">
+    <footer className="bg-light text-dark w-100 py-4 text-start">
       <div className="footer-container">
         <div className="row">
           <div className="col-md-8">
@@ -23,17 +23,17 @@ function Footer() {
           <div className="col-md-4">
             <ul className="h-100 d-flex flex-column justify-content-between align-items-end">
               <li>
-                <Link to="/contact" className="text-white">
+                <Link to="/contact" className="text-dark">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link to="/events" className="text-white">
+                <Link to="/events" className="text-dark">
                   Nos événements
                 </Link>
               </li>
               <li>
-                <Link to="/privacy" className="text-white">
+                <Link to="/privacy" className="text-dark">
                   Charte de confidentialité
                 </Link>
               </li>
@@ -45,4 +45,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default FooterWhite;

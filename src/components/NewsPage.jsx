@@ -5,20 +5,29 @@ import NavBar from './NavBar';
 import Footer from './Footer';
 import '../assets/scss/main.scss';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import newsData from '../json/newsdata.json';
+import { getAllNews } from '../Api';
 
 const NewsPage = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
-    setNews(newsData);
+    const fetchNews = async () => {
+      try {
+        const newsData = await getAllNews();
+        setNews(newsData);
+      } catch (error) {
+        setError('Error fetching news: ' + error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNews();
   }, []);
 
   return (
     <div className="news-page">
-      <header className="container my-5">
-        <NavBar />
-      </header>
+      <NavBar />
       <Container>
         <Row className="my-4">
           <Col>
@@ -31,23 +40,21 @@ const NewsPage = () => {
                   className="form-control"
                 />
               </Form.Group>
-              <Button variant="primary" type="submit" className="w-100">
-                Filtrer
-              </Button>
+              <div className='d-flex flex-row'>
+
+              </div>
             </Form>
           </Col>
         </Row>
-        <Row>
+        <div className='d-flex flex-column mb-5'>
           {news.map((newsItem, index) => (
-            <Col key={index} md={6} lg={4} className="mb-4">
               <NewsItem
                 title={newsItem.title}
                 description={newsItem.description}
                 date={newsItem.date}
               />
-            </Col>
           ))}
-        </Row>
+        </div>
       </Container>
       <Footer />
     </div>
