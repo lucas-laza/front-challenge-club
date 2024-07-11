@@ -40,23 +40,21 @@ const NewsPage = () => {
                   className="form-control"
                 />
               </Form.Group>
-              <Button variant="primary" type="submit" className="w-100">
-                Filtrer
-              </Button>
+              <div className='d-flex flex-row'>
+
+              </div>
             </Form>
           </Col>
         </Row>
-        <Row>
+        <div className='d-flex flex-column mb-5'>
           {news.map((newsItem, index) => (
-            <Col key={index} md={6} lg={4} className="mb-4">
               <NewsItem
                 title={newsItem.title}
                 description={newsItem.description}
                 date={newsItem.date}
               />
-            </Col>
           ))}
-        </Row>
+        </div>
       </Container>
       <Footer />
     </div>

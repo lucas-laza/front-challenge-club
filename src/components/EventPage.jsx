@@ -26,8 +26,8 @@ const EventsPage = () => {
   return (
     <div className="d-flex flex-column custom-bg">
       <NavBar />
-      <div className="container ">
-        <div className="d-flex flex-column align-items-start">
+      <div className='container mt-5 mb-4'>
+        <div className='d-flex flex-column align-items-start'>
           <h2 className="title-second">Tournoi à venir</h2>
           <hr className="w-100" />
           <EventCarousel events={events.slice(0, 5)} />

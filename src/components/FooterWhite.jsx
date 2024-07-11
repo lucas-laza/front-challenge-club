@@ -23,17 +23,17 @@ function FooterWhite() {
           <div className="col-md-4">
             <ul className="h-100 d-flex flex-column justify-content-between align-items-end">
               <li>
-                <Link to="/contact" className="text-white">
+                <Link to="/contact" className="text-dark">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link to="/events" className="text-white">
+                <Link to="/events" className="text-dark">
                   Nos événements
                 </Link>
               </li>
               <li>
-                <Link to="/privacy" className="text-white">
+                <Link to="/privacy" className="text-dark">
                   Charte de confidentialité
                 </Link>
               </li>

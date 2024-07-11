@@ -3,7 +3,7 @@ import '../assets/scss/main.scss';
 
 const NewsItem = ({ title, description, date }) => {
   return (
-    <div className="text-dark d-flex flex-column align-items-start mb-3">
+    <div className="text-dark d-flex flex-column align-items-start mb-3 mt-3">
       <div className='d-flex flex-row mb-3'>
         <button type="button" class="btn btn-primary btn-sm">Nouveauté</button>
         <button type="button" class="btn btn-warning btn-sm ms-2">Pro 1</button>
