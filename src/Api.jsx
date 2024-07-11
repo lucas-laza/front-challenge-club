@@ -82,12 +82,12 @@ export const updateUser = async (id, userData, token) => {
 
 // News
 export const createNews = async (newsData) => {
-  const token = localStorage.getItem('token'); // Récupérer le token du localStorage
+  const token = localStorage.getItem('token');
   try {
     const response = await apiClient.post('/news', newsData, {
       headers: {
         'Content-Type': 'multipart/form-data',
-        Authorization: `Bearer ${token}`, // Ajouter le token dans le header
+        Authorization: `Bearer ${token}`,
       },
     });
     return response.data;
@@ -115,8 +115,13 @@ export const getNewsById = async (id) => {
 };
 
 export const updateNews = async (id, newsData) => {
+  const token = localStorage.getItem('token');
   try {
-    const response = await apiClient.put(`/news/${id}`, newsData);
+    const response = await apiClient.put(`/news/${id}`, newsData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
   } catch (error) {
     handleError(error);
@@ -124,8 +129,13 @@ export const updateNews = async (id, newsData) => {
 };
 
 export const deleteNews = async (id) => {
+  const token = localStorage.getItem('token');
   try {
-    const response = await apiClient.delete(`/news/${id}`);
+    const response = await apiClient.delete(`/news/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
   } catch (error) {
     handleError(error);
@@ -157,10 +167,60 @@ export const getAllEvents = async () => {
   }
 };
 
+export const updateEvent = async (id, eventData) => {
+  const token = localStorage.getItem('token'); // Récupérer le token du localStorage
+  try {
+    const response = await apiClient.put(`/events/${id}`, eventData, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`, // Ajouter le token dans le header
+      },
+    });
+    return response.data;
+  } catch (error) {
+    handleError(error);
+  }
+};
+
+export const deleteEvent = async (id) => {
+  const token = localStorage.getItem('token');
+  if (!id) {
+    console.error('ID is undefined');
+    throw new Error('ID is required to delete an event');
+  }
+  try {
+    const response = await apiClient.delete(`/events/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  } catch (error) {
+    handleError(error);
+  }
+};
+
+// Fonction pour inscrire un utilisateur à un événement
+export const addUserToEvent = async (eventId, userData) => {
+  try {
+    const response = await apiClient.post(`/events/addUser`, {
+      eventId: eventId,
+      user: userData,
+    });
+    return response.data;
+  } catch (error) {
+    handleError(error);
+  }
+};
+
 // Contacts
 export const createContact = async (contactData) => {
+  const token = localStorage.getItem('token');
   try {
-    const response = await apiClient.post('/contacts', contactData);
+    const response = await apiClient.post('/contacts', contactData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
   } catch (error) {
     handleError(error);
@@ -177,8 +237,13 @@ export const getAllContacts = async () => {
 };
 
 export const getContactById = async (id) => {
+  const token = localStorage.getItem('token');
   try {
-    const response = await apiClient.get(`/contacts/${id}`);
+    const response = await apiClient.get(`/contacts/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
   } catch (error) {
     handleError(error);
@@ -186,8 +251,13 @@ export const getContactById = async (id) => {
 };
 
 export const updateContact = async (id, contactData) => {
+  const token = localStorage.getItem('token');
   try {
-    const response = await apiClient.put(`/contacts/${id}`, contactData);
+    const response = await apiClient.put(`/contacts/${id}`, contactData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
   } catch (error) {
     handleError(error);
@@ -195,8 +265,13 @@ export const updateContact = async (id, contactData) => {
 };
 
 export const deleteContact = async (id) => {
+  const token = localStorage.getItem('token');
   try {
-    const response = await apiClient.delete(`/contacts/${id}`);
+    const response = await apiClient.delete(`/contacts/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
   } catch (error) {
     handleError(error);

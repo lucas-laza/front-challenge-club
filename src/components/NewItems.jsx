@@ -6,11 +6,19 @@ const NewsItem = ({ title, description, date }) => {
   // Formater la date
   const formattedDate = formatDate(date);
 
+  const isDateLessThanOneDayOld = (date) => {
+      const currentDate = new Date();
+      const givenDate = new Date(date);
+      const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
+
+      return (currentDate - givenDate) < oneDayInMilliseconds;
+  };
+
   return (
     <div className="text-dark d-flex flex-column align-items-start mb-3 mt-3">
       <div className='d-flex flex-row mb-3'>
-        <button type="button" className="btn btn-primary btn-sm">Nouveauté</button>
-        <button type="button" className="btn btn-warning btn-sm ms-2">Pro 1</button>
+        {isDateLessThanOneDayOld(date) ? <button type="button" class="btn btn-primary btn-sm">Nouveauté</button> : ""}
+        
       </div>
       <h5 className="mb-1">{title}</h5>
       <hr className='w-100 border-primary' />

@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Modal, Button } from 'react-bootstrap';
 import '../assets/scss/main.scss';
 import imagePlaceholder from '../assets/img/imageplaceholder.png';
 import { formatDate } from '../utils/dateUtils';
@@ -61,11 +59,9 @@ const EventCard = ({ image, title, description, date, location }) => {
 };
 
 EventCard.propTypes = {
-  image: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default EventCard;

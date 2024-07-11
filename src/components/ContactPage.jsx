@@ -32,9 +32,7 @@ const ContactPage = () => {
 
   return (
     <div className="contact-page">
-      <header className="container my-5">
-        <NavBar />
-      </header>
+    <NavBar />
       <Container>
         <Row className="align-items-center my-5">
           <Col md={6}>

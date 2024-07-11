@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import EventCard from './EventCard';
 import '../assets/scss/main.scss';
 
-const EventCarousel = ({ events }) => {
+const EventCarousel = ({ events, onEventClick }) => {
   const carouselRef = useRef(null);
 
   const scroll = (direction) => {
@@ -16,16 +16,15 @@ const EventCarousel = ({ events }) => {
   };
 
   return (
-    <div className="event-carousel-container mb-4">
+    <div className="event-carousel-container">
       <div className="event-carousel" ref={carouselRef}>
         {events.map((event) => (
           <EventCard
             key={event.id}
             image={event.image}
-            title={event.title}
-            description={event.description}
+            name={event.name}
             date={event.date}
-            location={event.location}
+            onClick={() => onEventClick(event)}
           />
         ))}
       </div>

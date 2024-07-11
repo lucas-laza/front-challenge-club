@@ -42,7 +42,7 @@ const Home = () => {
       <HeroBanner />
       <div className="custom-bg p-3">
         <div className="container pb-5">
-          <div className="d-flex flex-row justify-content-between w-100 align-items-center mb-4 mt-4">
+          <div className="d-flex flex-row text-white justify-content-between w-100 align-items-center mb-4 mt-4">
             <span className="title-custom">Nos événements</span>
             <button
               className="btn btn-light text-primary mt-3"

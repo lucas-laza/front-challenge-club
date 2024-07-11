@@ -1,11 +1,17 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/scss/main.scss';
 import { FaUser, FaUserShield } from 'react-icons/fa';
 
 function Navbar() {
   const isLoggedIn = !!localStorage.getItem('token');
-  const isAdmin = localStorage.getItem('is_admin') === 'true';
+  const isAdmin = localStorage.getItem('isAdmin') === 'true';
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate('/login');
+  };
 
   return (
     <header className="d-flex flex-wrap bg-light align-items-center justify-content-between py-3 mb-4 border-bottom">
@@ -43,18 +49,29 @@ function Navbar() {
             </NavLink>
           </li>
         </ul>
-        {isLoggedIn && (
-          <div className="ms-auto d-flex align-items-center">
-            {isAdmin && (
-              <NavLink to="/admin-page" className="nav-link">
-                <FaUserShield size={24} style={{ marginLeft: '20px' }} />
+        <div className="ms-auto d-flex align-items-center">
+          {isLoggedIn ? (
+            <>
+              {isAdmin && (
+                <NavLink to="/admin/events/create" className="nav-link">
+                  <FaUserShield size={24} style={{ marginLeft: '20px' }} />
+                </NavLink>
+              )}
+              <NavLink to="/profile" className="nav-link">
+                <FaUser size={24} style={{ marginLeft: '20px' }} />
               </NavLink>
-            )}
-            <NavLink to="/profile" className="nav-link">
-              <FaUser size={24} style={{ marginLeft: '20px' }} />
+              <button
+                className="btn btn-outline-danger ml-2"
+                onClick={handleLogout}>
+                Déconnexion
+              </button>
+            </>
+          ) : (
+            <NavLink to="/login" className="btn btn-outline-primary">
+              Connexion
             </NavLink>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </header>
   );
