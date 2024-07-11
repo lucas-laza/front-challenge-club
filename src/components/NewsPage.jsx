@@ -30,8 +30,7 @@ const NewsPage = () => {
       <NavBar />
       <Container>
         <Row className="my-4">
-          <Col>
-            <h1 className="text-center mb-4">Nos actualités</h1>
+          <Col className='mt-4'>
             <Form>
               <Form.Group controlId="search" className="mb-3">
                 <Form.Control
