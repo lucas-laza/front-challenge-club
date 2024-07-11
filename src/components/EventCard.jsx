@@ -1,67 +1,27 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Modal, Button } from 'react-bootstrap';
 import '../assets/scss/main.scss';
-import imagePlaceholder from '../assets/img/imageplaceholder.png';
 
-const EventCard = ({ image, title, description, date, location }) => {
-  const [show, setShow] = useState(false);
-
-  const handleShow = () => setShow(true);
-  const handleClose = () => setShow(false);
-
+const EventCard = ({ image, title, description, date, location, onClick }) => {
   return (
-    <>
-      <div className="card" onClick={handleShow}>
-        <img
-          src={image || imagePlaceholder}
-          className="card-img-top"
-          alt={title}
-        />
-        <div className="d-flex flex-column align-items-start p-3">
-          <h5 className="card-title">{title}</h5>
-          <p className="card-text">{description}</p>
-          <p className="card-text">{date}</p>
-          <p className="card-text">{location}</p>
-        </div>
+    <div className="card" onClick={onClick}>
+      <img src={image} className="card-img-top" alt={title} />
+      <div className="card-body">
+        <h5 className="card-title">{title}</h5>
+        <p className="card-text">{description}</p>
+        <p className="card-text">{date}</p>
+        <p className="card-text">{location}</p>
       </div>
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>{title}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <img
-            src={image || imagePlaceholder}
-            className="img-fluid mb-3"
-            alt={title}
-          />
-          <p>
-            <strong>Description:</strong> {description}
-          </p>
-          <p>
-            <strong>Date:</strong> {date}
-          </p>
-          <p>
-            <strong>Location:</strong> {location}
-          </p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
+    </div>
   );
 };
 
 EventCard.propTypes = {
-  image: PropTypes.string,
+  image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default EventCard;

@@ -157,6 +157,19 @@ export const getAllEvents = async () => {
   }
 };
 
+// Fonction pour inscrire un utilisateur à un événement
+export const addUserToEvent = async (eventId, userData) => {
+  try {
+    const response = await apiClient.post(`/events/addUser`, {
+      eventId: eventId,
+      user: userData,
+    });
+    return response.data;
+  } catch (error) {
+    handleError(error);
+  }
+};
+
 // Contacts
 export const createContact = async (contactData) => {
   try {
