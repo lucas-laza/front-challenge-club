@@ -34,6 +34,9 @@ const AdminNewsCreate = () => {
     e.preventDefault();
     const formData = new FormData();
     Object.keys(articleData).forEach((key) => {
+      if (key === 'image' && !articleData[key]) {
+        return; // Skip appending if image is null
+      }
       formData.append(key, articleData[key]);
     });
 
@@ -96,7 +99,6 @@ const AdminNewsCreate = () => {
               type="file"
               name="image"
               onChange={handleArticleChange}
-              required
             />
           </Form.Group>
           <Button type="submit" className="btn btn-primary w-100">

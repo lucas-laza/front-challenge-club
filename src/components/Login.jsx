@@ -32,13 +32,13 @@ function Login() {
   return (
     <div className="container mt-5">
       <div className="row justify-content-center">
-        <div>
-          <div className="card login-card">
-            <div className="row no-gutters">
-              <div className="col-md-6">
-                <img src={loginImage} className="card-img" alt="Login" />
+        <div className='w-75'>
+          <div className="card w-100 login-card">
+            <div className="d-flex flex-row no-gutters w-100">
+              <div className="w-50">
+                <img src={loginImage} className="w-100" alt="Login" />
               </div>
-              <div className="col-md-6 d-flex align-items-center">
+              <div className="w-50 d-flex align-items-center">
                 <div className="card-body">
                   <h3 className="card-title mb-4">Connectez-vous</h3>
                   {errorMessage && (

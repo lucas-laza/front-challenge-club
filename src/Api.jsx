@@ -23,6 +23,17 @@ const handleError = (error) => {
   throw error;
 };
 
+export const getFilteredEvents = async (isOver, isTournament) => {
+  try {
+    const response = await apiClient.get('/feed/events', {
+      params: { isOver, isTournament },
+    });
+    return response.data;
+  } catch (error) {
+    handleError(error);
+  }
+};
+
 // Auth
 export const signup = async (userData) => {
   try {

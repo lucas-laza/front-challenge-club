@@ -31,7 +31,7 @@ function NavBarAdmin() {
         </li>
         <li className="nav-item mb-3">
           <Link to="/admin/news/create" className="nav-link text-white">
-            Creation Actualités
+            Création Actualités
           </Link>
         </li>
         <li className="nav-item mb-3">
