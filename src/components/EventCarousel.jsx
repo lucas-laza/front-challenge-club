@@ -22,10 +22,8 @@ const EventCarousel = ({ events, onEventClick }) => {
           <EventCard
             key={event.id}
             image={event.image}
-            title={event.title}
-            description={event.description}
+            name={event.name}
             date={event.date}
-            location={event.location}
             onClick={() => onEventClick(event)}
           />
         ))}

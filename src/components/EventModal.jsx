@@ -7,7 +7,7 @@ const EventModal = ({ show, handleClose, event, handleShowRegister }) => {
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>{event.title}</Modal.Title>
+        <Modal.Title>{event.name}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <img src={event.image} alt={event.title} className="img-fluid mb-3" />
