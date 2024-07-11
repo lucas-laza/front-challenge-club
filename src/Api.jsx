@@ -188,13 +188,17 @@ export const deleteEvent = async (id) => {
     console.error('ID is undefined');
     throw new Error('ID is required to delete an event');
   }
-
   try {
     const response = await apiClient.delete(`/events/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    }); 
+    });
+  } catch (error) {
+    handleError(error);
+  }
+};
+
 // Fonction pour inscrire un utilisateur à un événement
 export const addUserToEvent = async (eventId, userData) => {
   try {

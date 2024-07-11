@@ -53,7 +53,7 @@ function Navbar() {
           {isLoggedIn ? (
             <>
               {isAdmin && (
-                <NavLink to="/admin-page" className="nav-link">
+                <NavLink to="/admin/events/create" className="nav-link">
                   <FaUserShield size={24} style={{ marginLeft: '20px' }} />
                 </NavLink>
               )}
@@ -62,8 +62,7 @@ function Navbar() {
               </NavLink>
               <button
                 className="btn btn-outline-danger ml-2"
-                onClick={handleLogout}
-              >
+                onClick={handleLogout}>
                 Déconnexion
               </button>
             </>

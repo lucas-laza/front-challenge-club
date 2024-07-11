@@ -15,6 +15,7 @@ import AdminNewsGestion from './components/AdminNewsGestion';
 function AppRoutes() {
   const token = localStorage.getItem('token');
   const isAdmin = localStorage.getItem('isAdmin');
+  console.log('isAdmin', isAdmin);
   const routes = (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -44,7 +45,7 @@ function AppRoutes() {
       <Route path="/profile" element={<ProfilePage token={token} />} />
     </Routes>
   );
-  return <Router>{isAdmin === true ? adminRoutes : routes}</Router>;
+  return <Router>{isAdmin === 'true' ? adminRoutes : routes}</Router>;
 }
 
 export default AppRoutes;
