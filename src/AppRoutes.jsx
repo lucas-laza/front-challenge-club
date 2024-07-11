@@ -6,8 +6,11 @@ import NewsPage from './components/NewsPage';
 import ClubInfoPage from './components/AboutUs';
 import ContactPage from './components/ContactPage';
 import EventsPage from './components/EventPage';
-import AdminPage from './components/AdminPage';
 import ProfilePage from './components/ProfilePage';
+import CreateEvent from './components/AdminEventsCreate';
+import GestionEvent from './components/AdminEventsGestion';
+import AdminNewsCreate from './components/AdminNewsCreate';
+import AdminNewsGestion from './components/AdminNewsGestion';
 
 function AppRoutes() {
   const token = localStorage.getItem('token');
@@ -21,8 +24,11 @@ function AppRoutes() {
         <Route path="/about-us" element={<ClubInfoPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/events" element={<EventsPage />} />
-        <Route path="/admin-page" element={<AdminPage />} />
         <Route path="/profile" element={<ProfilePage token={token} />} />
+        <Route path="/admin/events/create" element={<CreateEvent />} />
+        <Route path="/admin/events/gestion" element={<GestionEvent />} />
+        <Route path="/admin/news/create" element={<AdminNewsCreate />} />
+        <Route path="/admin/news/gestion" element={<AdminNewsGestion />} />
       </Routes>
     </Router>
   );
