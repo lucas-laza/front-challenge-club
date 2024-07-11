@@ -46,7 +46,7 @@ const EventsPage = () => {
   return (
     <div className="d-flex flex-column custom-bg">
       <NavBar />
-      <div className='container '>
+      <div className='container mt-5 text-white mb-4'>
         <div className='d-flex flex-column align-items-start'>
           <h2 className="title-second">Tournoi à venir</h2>
           <hr className='w-100'/>
