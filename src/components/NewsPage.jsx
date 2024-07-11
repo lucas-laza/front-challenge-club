@@ -4,11 +4,14 @@ import NewsItem from './NewItems';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import '../assets/scss/main.scss';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form } from 'react-bootstrap';
 import { getAllNews } from '../Api';
+import NewsModal from './NewModal';
 
 const NewsPage = () => {
   const [news, setNews] = useState([]);
+  const [selectedNews, setSelectedNews] = useState(null);
+  const [showNewsModal, setShowNewsModal] = useState(false);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -16,21 +19,29 @@ const NewsPage = () => {
         const newsData = await getAllNews();
         setNews(newsData);
       } catch (error) {
-        setError('Error fetching news: ' + error.message);
-      } finally {
-        setLoading(false);
+        console.error('Error fetching news:', error);
       }
     };
 
     fetchNews();
   }, []);
 
+  const handleNewsClick = (newsItem) => {
+    setSelectedNews(newsItem);
+    setShowNewsModal(true);
+  };
+
+  const handleCloseNewsModal = () => {
+    setShowNewsModal(false);
+    setSelectedNews(null);
+  };
+
   return (
     <div className="news-page">
       <NavBar />
       <Container>
         <Row className="my-4">
-          <Col className='mt-4'>
+          <Col className="mt-4">
             <Form>
               <Form.Group controlId="search" className="mb-3">
                 <Form.Control
@@ -39,23 +50,28 @@ const NewsPage = () => {
                   className="form-control"
                 />
               </Form.Group>
-              <div className='d-flex flex-row'>
-
-              </div>
+              <div className="d-flex flex-row"></div>
             </Form>
           </Col>
         </Row>
-        <div className='d-flex flex-column mb-5'>
+        <div className="d-flex flex-column mb-5">
           {news.map((newsItem, index) => (
+            <div key={index} onClick={() => handleNewsClick(newsItem)}>
               <NewsItem
                 title={newsItem.title}
                 description={newsItem.description}
                 date={newsItem.date}
               />
+            </div>
           ))}
         </div>
       </Container>
       <Footer />
+      <NewsModal
+        show={showNewsModal}
+        handleClose={handleCloseNewsModal}
+        news={selectedNews}
+      />
     </div>
   );
 };
