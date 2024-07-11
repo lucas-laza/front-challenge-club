@@ -14,24 +14,37 @@ import AdminNewsGestion from './components/AdminNewsGestion';
 
 function AppRoutes() {
   const token = localStorage.getItem('token');
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Registration />} />
-        <Route path="/news" element={<NewsPage />} />
-        <Route path="/about-us" element={<ClubInfoPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/events" element={<EventsPage />} />
-        <Route path="/profile" element={<ProfilePage token={token} />} />
-        <Route path="/admin/events/create" element={<CreateEvent />} />
-        <Route path="/admin/events/gestion" element={<GestionEvent />} />
-        <Route path="/admin/news/create" element={<AdminNewsCreate />} />
-        <Route path="/admin/news/gestion" element={<AdminNewsGestion />} />
-      </Routes>
-    </Router>
+  const isAdmin = localStorage.getItem('isAdmin');
+  const routes = (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Registration />} />
+      <Route path="/news" element={<NewsPage />} />
+      <Route path="/about-us" element={<ClubInfoPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/events" element={<EventsPage />} />
+      <Route path="/profile" element={<ProfilePage token={token} />} />
+    </Routes>
   );
+  const adminRoutes = (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Registration />} />
+      <Route path="/news" element={<NewsPage />} />
+      <Route path="/about-us" element={<ClubInfoPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/events" element={<EventsPage />} />
+
+      <Route path="/admin/events/create" element={<CreateEvent />} />
+      <Route path="/admin/events/gestion" element={<GestionEvent />} />
+      <Route path="/admin/news/create" element={<AdminNewsCreate />} />
+      <Route path="/admin/news/gestion" element={<AdminNewsGestion />} />
+      <Route path="/profile" element={<ProfilePage token={token} />} />
+    </Routes>
+  );
+  return <Router>{isAdmin === true ? adminRoutes : routes}</Router>;
 }
 
 export default AppRoutes;
