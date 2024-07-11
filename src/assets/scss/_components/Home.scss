@@ -15,5 +15,10 @@
 }
 
 .hero-title h1 {
-  font-size: 48px;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 2rem;
+  }
 }

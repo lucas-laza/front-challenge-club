@@ -5,11 +5,11 @@ import bannerimg from '../assets/img/hero-banner.svg';
 const HeroBanner = () => {
   return (
     <div className="hero-banner mb-5 mt-5">
-      <div className="hero-content d-flex flex-row justify-content-between align-items-center w-75">
+      <div className="hero-content d-flex justify-content-between align-items-center w-75">
         <div className="hero-img w-50 text-center">
           <img src={bannerimg} alt="Tennis de table" className="img-fluid" />
         </div>
-        <div className="hero-title text-start" style={{width: "40%"}}>
+        <div className="hero-title text-start">
           <div>
             <h1>Club de tennis de table de Lille</h1>
           </div>
