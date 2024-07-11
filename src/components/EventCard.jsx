@@ -3,12 +3,16 @@ import PropTypes from 'prop-types';
 import { Modal, Button } from 'react-bootstrap';
 import '../assets/scss/main.scss';
 import imagePlaceholder from '../assets/img/imageplaceholder.png';
+import { formatDate } from '../utils/dateUtils';
 
 const EventCard = ({ image, title, description, date, location }) => {
   const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+
+  // Formater la date
+  const formattedDate = formatDate(date);
 
   return (
     <>
@@ -21,7 +25,7 @@ const EventCard = ({ image, title, description, date, location }) => {
         <div className="d-flex flex-column align-items-start p-3">
           <h5 className="card-title">{title}</h5>
           <p className="card-text">{description}</p>
-          <p className="card-text">{date}</p>
+          <p className="card-text">{formattedDate}</p>
           <p className="card-text">{location}</p>
         </div>
       </div>
@@ -40,7 +44,7 @@ const EventCard = ({ image, title, description, date, location }) => {
             <strong>Description:</strong> {description}
           </p>
           <p>
-            <strong>Date:</strong> {date}
+            <strong>Date:</strong> {formattedDate}
           </p>
           <p>
             <strong>Location:</strong> {location}
