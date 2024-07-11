@@ -80,66 +80,16 @@ export const updateUser = async (id, userData, token) => {
   }
 };
 
-export const deleteUser = async (id, token) => {
-  setAuthToken(token);
-  try {
-    const response = await apiClient.delete(`/users/${id}`);
-    return response.data;
-  } catch (error) {
-    handleError(error);
-  }
-};
-
-// Events
-export const createEvent = async (eventData) => {
-  try {
-    const response = await apiClient.post('/events', eventData);
-    return response.data;
-  } catch (error) {
-    handleError(error);
-  }
-};
-
-export const getAllEvents = async () => {
-  try {
-    const response = await apiClient.get('/events');
-    return response.data;
-  } catch (error) {
-    handleError(error);
-  }
-};
-
-export const getEventById = async (id) => {
-  try {
-    const response = await apiClient.get(`/events/${id}`);
-    return response.data;
-  } catch (error) {
-    handleError(error);
-  }
-};
-
-export const updateEvent = async (id, eventData) => {
-  try {
-    const response = await apiClient.put(`/events/${id}`, eventData);
-    return response.data;
-  } catch (error) {
-    handleError(error);
-  }
-};
-
-export const deleteEvent = async (id) => {
-  try {
-    const response = await apiClient.delete(`/events/${id}`);
-    return response.data;
-  } catch (error) {
-    handleError(error);
-  }
-};
-
 // News
 export const createNews = async (newsData) => {
+  const token = localStorage.getItem('token'); // Récupérer le token du localStorage
   try {
-    const response = await apiClient.post('/news', newsData);
+    const response = await apiClient.post('/news', newsData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${token}`, // Ajouter le token dans le header
+      },
+    });
     return response.data;
   } catch (error) {
     handleError(error);
@@ -176,6 +126,31 @@ export const updateNews = async (id, newsData) => {
 export const deleteNews = async (id) => {
   try {
     const response = await apiClient.delete(`/news/${id}`);
+    return response.data;
+  } catch (error) {
+    handleError(error);
+  }
+};
+
+// Events
+export const createEvent = async (eventData) => {
+  const token = localStorage.getItem('token'); // Récupérer le token du localStorage
+  try {
+    const response = await apiClient.post('/events', eventData, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`, // Ajouter le token dans le header
+      },
+    });
+    return response.data;
+  } catch (error) {
+    handleError(error);
+  }
+};
+
+export const getAllEvents = async () => {
+  try {
+    const response = await apiClient.get('/events');
     return response.data;
   } catch (error) {
     handleError(error);

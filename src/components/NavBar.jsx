@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/scss/main.scss';
-import { FaUser, FaUserShield } from 'react-icons/fa'; // Importer l'icône d'administration
+import { FaUser, FaUserShield } from 'react-icons/fa';
 
 function Navbar() {
-  const isLoggedIn = !!localStorage.getItem('token'); // Vérifier si l'utilisateur est connecté
-  const isAdmin = localStorage.getItem('is_admin') === 'true'; // Vérifier si l'utilisateur est un administrateur
+  const isLoggedIn = !!localStorage.getItem('token');
+  const isAdmin = localStorage.getItem('is_admin') === 'true';
 
   return (
     <header className="d-flex flex-wrap bg-light align-items-center justify-content-between py-3 mb-4 border-bottom">

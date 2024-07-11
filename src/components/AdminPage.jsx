@@ -52,6 +52,12 @@ const AdminPage = () => {
     Object.keys(articleData).forEach((key) => {
       formData.append(key, articleData[key]);
     });
+
+    // Log the FormData content for debugging
+    for (let [key, value] of formData.entries()) {
+      console.log(key, value);
+    }
+
     try {
       const response = await createNews(formData);
       console.log('Article created:', response);
