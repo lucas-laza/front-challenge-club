@@ -12,7 +12,7 @@ function NavBarAdmin() {
     <div
       className="d-flex flex-column flex-shrink-0 p-3 bg-dark text-white"
       style={{ width: 280, height: '100vh' }}>
-      <h2 className="text-center mb-4 text-white">Admin Panel</h2>
+      <h2 className="text-center mb-4">Admin Panel</h2>
       <ul className="nav nav-pills flex-column mb-auto">
         <li className="nav-item mb-3">
           <Link to="/" className="nav-link text-white" aria-current="page">
@@ -31,12 +31,17 @@ function NavBarAdmin() {
         </li>
         <li className="nav-item mb-3">
           <Link to="/admin/news/create" className="nav-link text-white">
-            Création Actualités
+            Creation Actualités
           </Link>
         </li>
         <li className="nav-item mb-3">
           <Link to="/admin/news/gestion" className="nav-link text-white">
             Gestion Actualités
+          </Link>
+        </li>
+        <li className="nav-item mb-3">
+          <Link to="/admin/users/gestion" className="nav-link text-white">
+            Gestion Utilisateurs
           </Link>
         </li>
       </ul>

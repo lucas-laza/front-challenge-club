@@ -63,6 +63,8 @@ const setAuthToken = (token) => {
 
 // Users
 export const getAllUsers = async () => {
+  const token = localStorage.getItem('token');
+  setAuthToken(token);
   try {
     const response = await apiClient.get('/users');
     return response.data;
@@ -85,6 +87,20 @@ export const updateUser = async (id, userData, token) => {
   setAuthToken(token);
   try {
     const response = await apiClient.put(`/users/${id}`, userData);
+    return response.data;
+  } catch (error) {
+    handleError(error);
+  }
+};
+
+export const deleteUser = async (id) => {
+  const token = localStorage.getItem('token');
+  try {
+    const response = await apiClient.delete(`/users/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return response.data;
   } catch (error) {
     handleError(error);

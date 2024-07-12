@@ -11,6 +11,7 @@ import CreateEvent from './components/AdminEventsCreate';
 import GestionEvent from './components/AdminEventsGestion';
 import AdminNewsCreate from './components/AdminNewsCreate';
 import AdminNewsGestion from './components/AdminNewsGestion';
+import AdminUsersGestion from './components/UserGestion';
 import Privacy from './components/Privacy';
 
 function AppRoutes() {
@@ -44,6 +45,7 @@ function AppRoutes() {
       <Route path="/admin/events/gestion" element={<GestionEvent />} />
       <Route path="/admin/news/create" element={<AdminNewsCreate />} />
       <Route path="/admin/news/gestion" element={<AdminNewsGestion />} />
+      <Route path="/admin/users/gestion" element={<AdminUsersGestion />} />
       <Route path="/profile" element={<ProfilePage token={token} />} />
     </Routes>
   );
