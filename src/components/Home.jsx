@@ -7,10 +7,13 @@ import NavBar from './NavBar';
 import Footer from './Footer';
 import HeroBanner from './HeroBanner';
 import { getAllEvents, getAllNews } from '../Api';
+import NewsModal from './NewModal';
 
 const Home = () => {
   const [events, setEvents] = useState([]);
   const [news, setNews] = useState([]);
+  const [selectedNews, setSelectedNews] = useState(null);
+  const [showNewsModal, setShowNewsModal] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,6 +38,18 @@ const Home = () => {
     fetchEvents();
     fetchNews();
   }, []);
+
+  // Fonction pour ouvrir la modale avec l'actualité sélectionnée
+  const handleNewsClick = (newsItem) => {
+    setSelectedNews(newsItem);
+    setShowNewsModal(true);
+  };
+
+  // Fonction pour fermer la modale
+  const handleCloseNewsModal = () => {
+    setShowNewsModal(false);
+    setSelectedNews(null);
+  };
 
   return (
     <div className="home">
@@ -64,16 +79,22 @@ const Home = () => {
         </div>
         <div className="list-group mb-4">
           {news.map((newsItem, index) => (
-            <NewsItem
-              key={index}
-              title={newsItem.title}
-              description={newsItem.description}
-              date={newsItem.date}
-            />
+            <div key={index} onClick={() => handleNewsClick(newsItem)}>
+              <NewsItem
+                title={newsItem.title}
+                description={newsItem.description}
+                date={newsItem.date}
+              />
+            </div>
           ))}
         </div>
       </section>
       <Footer />
+      <NewsModal
+        show={showNewsModal}
+        handleClose={handleCloseNewsModal}
+        news={selectedNews}
+      />
     </div>
   );
 };
