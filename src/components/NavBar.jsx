@@ -1,7 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/scss/main.scss';
-import { FaUser, FaUserShield } from 'react-icons/fa';
 
 function Navbar() {
   const isLoggedIn = !!localStorage.getItem('token');
@@ -53,15 +52,19 @@ function Navbar() {
           {isLoggedIn ? (
             <>
               {isAdmin && (
-                <NavLink to="/admin/events/create" className="nav-link">
-                  <FaUserShield size={24} style={{ marginLeft: '20px' }} />
+                <NavLink
+                  to="/admin/events/create"
+                  className="btn btn-outline-primary ml-2 me-2">
+                  Admin
                 </NavLink>
               )}
-              <NavLink to="/profile" className="nav-link">
-                <FaUser size={24} style={{ marginLeft: '20px' }} />
+              <NavLink
+                to="/profile"
+                className="btn btn-outline-secondary ml-2 me-2">
+                Profil
               </NavLink>
               <button
-                className="btn btn-outline-danger ml-2"
+                className="btn btn-outline-danger ml-2 me-2"
                 onClick={handleLogout}>
                 Déconnexion
               </button>

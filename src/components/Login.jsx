@@ -16,7 +16,6 @@ function Login() {
     try {
       const response = await login({ email, password });
       console.log('Login successful:', response);
-      e;
       localStorage.setItem('token', response.token);
       localStorage.setItem('userId', response.userId);
       localStorage.setItem('isAdmin', response.isAdmin);
@@ -32,7 +31,7 @@ function Login() {
   return (
     <div className="container mt-5">
       <div className="row justify-content-center">
-        <div className='w-75'>
+        <div className="w-75">
           <div className="card w-100 login-card">
             <div className="d-flex flex-row no-gutters w-100">
               <div className="w-50">
