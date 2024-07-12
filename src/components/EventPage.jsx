@@ -32,7 +32,7 @@ const EventsPage = () => {
         );
 
         const pastEventsData = eventsData.filter(
-          (event) => new Date(event.date) < now && !event.is_tournament
+          (event) => new Date(event.date) < now
         );
 
         setOngoingTournaments(ongoingTournamentsData);

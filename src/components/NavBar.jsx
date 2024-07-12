@@ -14,8 +14,8 @@ function Navbar() {
 
   return (
     <header className="d-flex flex-wrap bg-light align-items-center justify-content-between py-3 mb-4 border-bottom">
-      <div className="container d-flex justify-content-between align-items-center">
-        <ul className="nav col-12 col-md-auto justify-content-center mb-md-0 flex-wrap w-100">
+      <div className="container d-flex justify-content-between align-items-center flex-wrap">
+        <ul className="nav justify-content-center mb-md-0 flex-wrap ">
           <li className="nav-item">
             <NavLink exact to="/" className="nav-link" activeClassName="active">
               Accueil

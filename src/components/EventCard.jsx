@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Modal, Button } from 'react-bootstrap';
 import '../assets/scss/main.scss';
 import imagePlaceholder from '../assets/img/imageplaceholder.png';
 import { formatDate } from '../utils/dateUtils';
 
-const EventCard = ({ image, title, description, date, location }) => {
+const EventCard = ({ image, name, description, date, location }) => {
   const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
-  // Formater la date
   const formattedDate = formatDate(date);
 
   return (
@@ -20,10 +19,10 @@ const EventCard = ({ image, title, description, date, location }) => {
         <img
           src={image || imagePlaceholder}
           className="card-img-top"
-          alt={title}
+          alt={name}
         />
         <div className="d-flex flex-column align-items-start p-3">
-          <h5 className="card-title">{title}</h5>
+          <h5 className="card-title">{name}</h5>
           <p className="card-text">{description}</p>
           <p className="card-text">{formattedDate}</p>
           <p className="card-text">{location}</p>
@@ -32,22 +31,19 @@ const EventCard = ({ image, title, description, date, location }) => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{title}</Modal.Title>
+          <Modal.Title>{name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <img
             src={image || imagePlaceholder}
             className="img-fluid mb-3"
-            alt={title}
+            alt={name}
           />
           <p>
-            <strong>Description:</strong> {description}
+            <strong>Titre : </strong> {name}
           </p>
           <p>
             <strong>Date:</strong> {formattedDate}
-          </p>
-          <p>
-            <strong>Location:</strong> {location}
           </p>
         </Modal.Body>
         <Modal.Footer>
@@ -62,7 +58,7 @@ const EventCard = ({ image, title, description, date, location }) => {
 
 EventCard.propTypes = {
   image: PropTypes.string,
-  title: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
