@@ -36,7 +36,7 @@ function Login() {
   return (
     <div className="container mt-5">
       <div className="row justify-content-center">
-        <div className='w-75'>
+        <div className="w-75">
           <div className="card w-100 login-card">
             <div className="d-flex flex-row no-gutters w-100">
               <div className="w-50">
