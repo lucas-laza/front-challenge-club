@@ -4,6 +4,13 @@ import PropTypes from 'prop-types';
 const NewsModal = ({ show, handleClose, news }) => {
   if (!news) return null;
 
+  // Replace backslashes with forward slashes in the image path
+  const imagePath = news.imageUrl ? news.imageUrl.replace(/\\/g, '/') : null;
+  const imageUrl = imagePath ? `http://localhost:3030/${imagePath}` : null;
+
+
+console.log(imageUrl);
+
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
@@ -14,10 +21,10 @@ const NewsModal = ({ show, handleClose, news }) => {
         <p>
           <strong>Date:</strong> {new Date(news.date).toLocaleDateString()}
         </p>
-        {news.image && (
+        {news.imageUrl && (
           <div className="text-center">
             <img
-              src={news.image}
+              src={imageUrl}
               alt={news.title}
               style={{ maxWidth: '100%' }}
             />

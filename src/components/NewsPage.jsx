@@ -16,7 +16,6 @@ const NewsPage = () => {
   const [error, setError] = useState(null);
   const [selectedNews, setSelectedNews] = useState(null);
   const [showNewsModal, setShowNewsModal] = useState(false);
-
   useEffect(() => {
     const fetchNews = async () => {
       try {
