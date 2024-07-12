@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/scss/main.scss';
 import loginImage from '../assets/img/lebrun.png';
 import { login } from '../Api';
+import { jwtDecode } from "jwt-decode";
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -16,16 +17,19 @@ function Login() {
     try {
       const response = await login({ email, password });
       console.log('Login successful:', response);
-      e;
+
       localStorage.setItem('token', response.token);
-      localStorage.setItem('userId', response.userId);
-      localStorage.setItem('isAdmin', response.isAdmin);
+
+      const decodedToken = jwtDecode(response.token);
+      console.log('Decoded Token:', decodedToken);
+
+      localStorage.setItem('userId', decodedToken.userId);
+      localStorage.setItem('isAdmin', decodedToken.isAdmin);
+
       navigate('/');
     } catch (error) {
       console.error('Error during login:', error);
-      setErrorMessage(
-        'Erreur de connexion. Veuillez vérifier vos identifiants.'
-      );
+      setErrorMessage('Erreur de connexion. Veuillez vérifier vos identifiants.');
     }
   };
 
